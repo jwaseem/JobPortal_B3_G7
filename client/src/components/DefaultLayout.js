@@ -1,4 +1,4 @@
-
+import { Ictlogo } from '../assets';
 import { Layout, Menu } from 'antd';
 import {
   MenuUnfoldOutlined,
@@ -32,10 +32,7 @@ class DefaultLayout extends React.Component {
       <Layout>
         <Sider trigger={null} collapsible collapsed={this.state.collapsed}>
           <div className="logo">
-              {this.state.collapsed? (<Image
-      width={50}
-      src="https://ictkerala.org/wp-content/uploads/2019/01/cropped-ict-ico.png"
-    />) :(<h1 >Alumni Job Portal</h1>)}
+              {this.state.collapsed? (<Ictlogo/>) :(<h1 >Alumni Job Portal</h1>)}
               </div>
           <Menu theme="dark" mode="inline" defaultSelectedKeys={[window.location.pathname]}>
             <Menu.Item key="/" icon={<UserOutlined />}>
