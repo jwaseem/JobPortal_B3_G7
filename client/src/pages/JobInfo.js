@@ -5,7 +5,7 @@ function JobInfo() {
     return (
         <div>
             <DefaultLayout>
-                <h1>JobInfo</h1>
+                <h1 className='hometitle'>JobInfo</h1>
             </DefaultLayout>
         </div>
     );

@@ -5,7 +5,7 @@ function PostJob() {
     return (
         <div>
             <DefaultLayout>
-                <h1>PostJob</h1>
+                <h1 className='title'>PostJob</h1>
             </DefaultLayout>
         </div>
     );

@@ -5,7 +5,7 @@ function Profile() {
     return (
         <div>
             <DefaultLayout>
-                <h1>Profile</h1>
+                <h1 className='title'>Profile</h1>
             </DefaultLayout>
         </div>
     );

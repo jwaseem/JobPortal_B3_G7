@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Jura&family=Montserrat:wght@500&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +7,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  
+  /* font-family: 'Montserrat', sans-serif !important; */
 }
 
 code {
@@ -31,11 +35,12 @@ code {
 }
 
 .site-layout .site-layout-background {
-  background: #fff;
+  background: rgb(255, 255, 255);
 }
 
 .ant-layout-sider {
   height: 100vh;
+
 }
 
 .ant-layout-header span svg{
@@ -52,3 +57,157 @@ margin-left: 10px !important;
 .logo h1{
   color: white !important;
 }
+
+.ant-layout-content{
+  margin: 0 !important;
+  padding: 10px !important;
+}
+
+.sweet-loading{
+  position: fixed !important;
+  top: 30% !important;
+  height: 100% !important;
+  width: 100% !important;
+  z-index: 9999;
+}
+
+.flex{
+  display: flex !important;
+  align-items:center !important;
+}
+
+.flex1{
+  display: flex !important;
+  float: right !important;
+}
+
+.flex2{
+  display: flex !important;
+  float: left !important;
+}
+
+p{
+  font-weight:500 !important;
+  margin: 2px !important;
+  padding: 2px !important;
+  font-size:16px !important;
+}
+
+.bs{
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px, rgba(0, 0, 0, 0.23) 0px 6px 6px;
+}
+
+.job-div{
+  border-radius: 15px !important;
+  background-color: white;
+}
+
+#components-layout-demo-top-side .logo {
+  float: left;
+  width: 120px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  background: rgba(255, 255, 255, 0.3);
+}
+.site-layout .site-layout-background {
+  background-image: url(./assets/bg1.jpg);
+  background-size: cover;
+}
+
+.hometitle{
+  color:white;
+  text-align: center;
+}
+
+.title{
+  color:white;
+}
+
+
+
+/* section {
+  width: 100%;
+  max-width: 420px;
+  min-height: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 1rem;
+  background-color: rgba(0,0,0,0.4);
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  flex-grow: 1;
+  padding-bottom: 1rem;
+}
+
+a, a:visited {
+  color: #fff;
+}
+
+input[type="text"],
+input[type="password"],
+button,
+textarea {
+font-family: 'Nunito', sans-serif;
+font-size: 22px;
+padding: 0.25rem;
+border-radius: 0.5rem;
+}
+
+label,
+button {
+margin-top: 1rem;
+}
+
+button {
+padding: 0.5rem;
+}
+
+.instructions {
+  font-size: 0.75rem;
+  border-radius: 0.5rem;
+  background: #000;
+  color: #fff;
+  padding: 0.25rem;
+  position: relative;
+  bottom: -10px;
+}
+
+.instructions > svg {
+  margin-right: 0.25rem;
+}
+
+.offscreen {
+  position: absolute;
+  left: -9999px;
+}
+
+.hide {
+  display: none;
+}
+
+.valid {
+  color: limegreen;
+  margin-left: 0.25rem;
+}
+
+.invalid {
+  color: red;
+  margin-left: 0.25rem;
+}
+
+.errmsg {
+  background-color: lightpink;
+  color: firebrick;
+  font-weight: bold;
+  padding: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.line {
+  display: inline-block;
+} */

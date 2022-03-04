@@ -5,7 +5,7 @@ function AppliedJobs() {
     return (
         <div>
             <DefaultLayout>
-                <h1>Applied Jobs</h1>
+                <h1 className='title'>Applied Jobs</h1>
             </DefaultLayout>
         </div>
     );
