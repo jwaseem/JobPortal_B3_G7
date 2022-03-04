@@ -110,8 +110,27 @@ p{
   background: rgba(255, 255, 255, 0.3);
 }
 .site-layout .site-layout-background {
+  background-color: black;
+}
+
+.homebg{
   background-image: url(./assets/bg1.jpg);
   background-size: cover;
+}
+
+.jobinfobg{
+  background-image: url(./assets/b2.jfif);
+  background-size: cover;
+}
+
+.jobdetailsbg{
+  background-color: white;
+  width: 70%;
+  height: 50%;
+  justify-content: center;
+  margin-top: 3%;
+  margin-left: 14%;
+  margin-bottom:3% ;
 }
 
 .hometitle{

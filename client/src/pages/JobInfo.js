@@ -15,8 +15,11 @@ const job =jobs.find((job) => job._id === (id));
 return (
         <div>
             <DefaultLayout>
-            
+            <div className='jobinfobg'>
+            <br></br>
+            <div className='jobdetailsbg'>
 
+                
             {job && ( <div>
                 <p><b>Title</b> :  {job.title} </p>
                 <p><b>Company</b> : {job.company}</p>
@@ -41,6 +44,10 @@ return (
                      <p><b>Posted on</b>: {moment(job.createdAt).format("MMM DD yyyy")}</p>
                  </div>
             </div>)}
+
+            </div>
+            <br></br>
+            </div>
             </DefaultLayout>
         </div>
     );

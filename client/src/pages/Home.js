@@ -18,6 +18,7 @@ function Home() {
     return (
         <div>
             <DefaultLayout>
+                <div className='homebg'>
                 <Row gutter={16}>
                 {jobs.map(job=>{
                    return <Col lg={8} sm={24}>
@@ -32,7 +33,7 @@ function Home() {
                         
                         <hr/>
                         <div className='flex justify-content-between'>
-                            <Link to="/"><Button>View</Button></Link>
+                            <Link to={`/jobs/${job._id}`}><Button>View</Button></Link>
                             <p>Posted on : {moment(job.createdAt).format('MMM DD yyyy')}</p>
 
                         </div>
@@ -40,7 +41,7 @@ function Home() {
                     </Col>;
                 })}
                 </Row>
-                
+                </div>
             </DefaultLayout>
         </div>
     );
