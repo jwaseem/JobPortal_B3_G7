@@ -1,17 +1,16 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from "redux";
+import { createStore,applyMiddleware } from "redux";
+import thunk from "redux-thunk";
+import { composeWithDevTools } from "redux-devtools-extension";
+import {jobsReducer} from "./reducers/jobsReducer";
+import { loaderReducer } from "./reducers/loaderReducer";
 
-import {createStore,applyMiddleware} from 'redux';
-import { composeWithDevTools } from 'redux-devtools-extension';
 
-import thunk from 'redux-thunk';
-
-import { jobsReducer } from './reducers/jobsReducer';
-import { loaderReducer } from './reducers/loaderReducer';
-
-const rootReducer = combineReducers({
+const rootReducer =combineReducers( {
     jobsReducer: jobsReducer,
-    loaderReducer: loaderReducer
+    loaderReducer : loaderReducer
 })
+
 
 const store = createStore(
     rootReducer,

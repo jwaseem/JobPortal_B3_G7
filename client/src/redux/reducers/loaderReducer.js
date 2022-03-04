@@ -1,15 +1,18 @@
 const initialState = {
-    loader:false
+    loader : false
 }
 
-export const loaderReducer = (state=initialState,action)=>{
-    switch(action.type){
-        case 'LOADING' : {
-            return{
+export const loaderReducer=(state=initialState, action)=>{
+
+    switch(action.type){ 
+        case 'LOADING': {
+
+         return{
                 ...state,
-                loader : action.payload
-            }
+                loader: action.payload
+            
         }
+    }
         default : return state
     }
 }
