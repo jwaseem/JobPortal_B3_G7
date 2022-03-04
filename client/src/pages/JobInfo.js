@@ -17,7 +17,7 @@ return (
             <DefaultLayout>
             <div className='jobinfobg'>
             <br></br>
-            <div className='jobdetailsbg'>
+            <div className='jobdetailsbg  p-2'>
 
                 
             {job && ( <div>
