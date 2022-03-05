@@ -52,6 +52,7 @@ class DefaultLayout extends React.Component {
             <Menu.Item key="/logout" icon={<UploadOutlined />}>
             <Link to='/login'>LogOut</Link>
             </Menu.Item>
+            
           </Menu>
           </div>
           
