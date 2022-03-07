@@ -59,7 +59,7 @@ class DefaultLayout extends React.Component {
                 onClick={() => {
                   const navigate = useNavigate();
                   localStorage.removeItem("userInfo");
-                  navigate("/");
+                  navigate("/login");
                 }}
               >
                 LogOut
