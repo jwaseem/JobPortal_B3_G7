@@ -28,8 +28,10 @@ function Home() {
   return (
     <div>
       <DefaultLayout>
-        <Button onClick={logoutHandler}>LogOut</Button>
-
+        <button type="button" class="btn btn-info" onClick={logoutHandler}>
+          LogOut
+        </button>
+        {/* <Button>LogOut</Button> */}
         <div className="homebg">
           <Row gutter={16}>
             {jobs.map((job) => {
