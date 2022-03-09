@@ -15,7 +15,7 @@ export const getAllJobs = () => async (dispatch) => {
 };
 
 export const postJob = (values) => async (dispatch) => {
-  values.postedBy = JSON.parse(localStorage.getItem("user"))._id;
+  values.postedBy = JSON.parse(localStorage.getItem("userInfo"))._id;
 
   dispatch({ type: "LOADING", payload: true });
   try {

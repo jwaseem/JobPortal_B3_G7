@@ -5,7 +5,7 @@ import { Table } from "antd";
 import moment from "moment";
 function PostedJobs() {
   const alljobs = useSelector((state) => state.jobsReducer).jobs;
-  const userid = JSON.parse(localStorage.getItem("user"))._id;
+  const userid = JSON.parse(localStorage.getItem("userInfo"))._id;
   const userPostedJobs = alljobs.filter((job) => job.postedBy == userid);
   console.log(userPostedJobs);
 
