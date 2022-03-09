@@ -10,8 +10,11 @@ import {
   FileDoneOutlined,
 } from "@ant-design/icons";
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Image } from "antd";
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { logout } from "../redux/actions/userActions";
 
 const { Header, Sider, Content } = Layout;
 
@@ -47,23 +50,16 @@ class DefaultLayout extends React.Component {
               <Menu.Item key="/postjob" icon={<UploadOutlined />}>
                 <Link to="/postjob">Post Jobs</Link>
               </Menu.Item>
+              <Menu.Item key="/posted" icon={<UploadOutlined />}>
+                <Link to="/posted">Posted Jobs</Link>
+              </Menu.Item>
               <Menu.Item key="/login" icon={<UploadOutlined />}>
                 <Link to="/login">Log In</Link>
               </Menu.Item>
               <Menu.Item key="/register" icon={<UploadOutlined />}>
                 <Link to="/register">Sign Up</Link>
               </Menu.Item>
-              <Menu.Item
-                key="/logout"
-                icon={<UploadOutlined />}
-                onClick={() => {
-                  const navigate = useNavigate();
-                  localStorage.removeItem("userInfo");
-                  navigate("/login");
-                }}
-              >
-                LogOut
-              </Menu.Item>
+              {/* <Menu.Item>LogOut</Menu.Item> */}
             </Menu>
           </div>
         </Header>

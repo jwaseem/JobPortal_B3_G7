@@ -5,6 +5,7 @@ import { getAllJobs } from "../redux/actions/jobActions";
 import { Row, Col, Button } from "antd";
 import moment from "moment";
 import { Link, useNavigate } from "react-router-dom";
+import { logout } from "../redux/actions/userActions";
 
 function Home() {
   const { jobs } = useSelector((state) => state.jobsReducer);
@@ -13,17 +14,22 @@ function Home() {
     dispatch(getAllJobs());
   }, []);
 
-  //   const userInfo = localStorage.getItem("userInfo");
-  //   const navigate = useNavigate();
-  // useEffect(() => {
-  //   if (userInfo) {
-  //     navigate("/");
-  //   }
-  // }, []);
+  // const { userInfo } = useSelector((state) => state.userLogin);
+  // const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
+  useEffect(() => {}, [userInfo]);
 
   return (
     <div>
       <DefaultLayout>
+        <Button onClick={logoutHandler}>LogOut</Button>
+
         <div className="homebg">
           <Row gutter={16}>
             {jobs.map((job) => {

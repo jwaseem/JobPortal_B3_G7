@@ -2,41 +2,32 @@ import DefaultLayout from "../components/DefaultLayout";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../redux/actions/userActions";
+import Loading from "../components/Loading";
+import ErrorMessage from "../components/ErrorMessage";
 
-const Login = ({}) => {
+function Login({ navigate }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
 
-  const submitHandler = async (e) => {
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
+
+  const submitHandler = (e) => {
     e.preventDefault();
-
-    try {
-      const config = {
-        headers: {
-          "Content-type": "application/json",
-        },
-      };
-
-      setLoading(true);
-
-      const { data } = await axios.post(
-        "/api/users/login",
-        {
-          email,
-          password,
-        },
-        config
-      );
-      console.log(data);
-      localStorage.setItem("userInfo", JSON.stringify(data));
-      setLoading(false);
-    } catch (error) {
-      setError(error.response.data.message);
-    }
+    dispatch(login(email, password));
   };
+
+  navigate = useNavigate();
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/");
+    }
+  }, [navigate, userInfo]);
 
   return (
     <div>
@@ -44,6 +35,8 @@ const Login = ({}) => {
         <br></br>
         <h1>Login</h1>
         <div className="loginContainer">
+          {error && <ErrorMessage variant="danger">{error}</ErrorMessage>}
+          {loading && <Loading />}
           <Form onSubmit={submitHandler}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
               <Form.Label>Email address</Form.Label>
@@ -78,6 +71,6 @@ const Login = ({}) => {
       </DefaultLayout>
     </div>
   );
-};
+}
 
 export default Login;

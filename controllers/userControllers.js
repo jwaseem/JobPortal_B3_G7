@@ -3,7 +3,7 @@ const User = require("../models/userModel");
 const generateToken = require("../utils/generateToken");
 
 const registerUser = asyncHandler(async (req, res) => {
-  const { name, email, password, pic } = req.body;
+  const { username, email, password, role, isAdmin } = req.body;
   const userExists = await User.findOne({ email });
 
   if (userExists) {
@@ -12,19 +12,20 @@ const registerUser = asyncHandler(async (req, res) => {
   }
 
   const user = await User.create({
-    name,
+    username,
     email,
     password,
-    pic,
+    role,
+    isAdmin,
   });
 
   if (user) {
     res.status(201).json({
       _id: user._id,
-      name: user.name,
+      username: user.username,
       email: user.email,
+      role: user.role,
       isAdmin: user.isAdmin,
-      pic: user.pic,
       token: generateToken(user._id),
     });
   } else {
@@ -39,10 +40,10 @@ const authUser = asyncHandler(async (req, res) => {
   if (user && (await user.matchPassword(password))) {
     res.json({
       _id: user._id,
-      name: user.name,
+      username: user.username,
       email: user.email,
+      role: user.role,
       isAdmin: user.isAdmin,
-      pic: user.pic,
       token: generateToken(user._id),
     });
   } else {

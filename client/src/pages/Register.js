@@ -2,47 +2,45 @@ import DefaultLayout from "../components/DefaultLayout";
 import { Link, useNavigate } from "react-router-dom";
 import { Form, Button, Row, Col } from "react-bootstrap";
 import React, { useState, useEffect } from "react";
-import axios from "axios";
+import { register } from "../redux/actions/userActions";
+import { useDispatch, useSelector } from "react-redux";
+import DropdownButton from "react-bootstrap/DropdownButton";
+import Dropdown from "react-bootstrap/Dropdown";
+import Loading from "../components/Loading";
+import ErrorMessage from "../components/ErrorMessage";
 
-const Register = () => {
-  const navigate = useNavigate();
+function Register({ navigate }) {
   const [email, setEmail] = useState("");
-  const [name, setName] = useState("");
-
+  const [username, setName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmPassword] = useState("");
+  const [role, setRole] = useState("");
+
   const [message, setMessage] = useState(null);
-  const [error, setError] = useState(false);
-  const [loading, setLoading] = useState(false);
 
-  const submitHandler = async (e) => {
-    e.preventDefault();
-    if (password !== confirmpassword) {
-      setMessage("Password Do Not Match");
-    } else {
-      setMessage(null);
-      try {
-        const config = {
-          headers: {
-            "Content-type": "application/json",
-          },
-        };
-        const { data } = await axios.post(
-          "/api/users",
-          {
-            name,
-            email,
-            password,
-          },
-          config
-        );
-        setLoading(false);
+  const dispatch = useDispatch();
+  navigate = useNavigate();
 
-        localStorage.setItem("userInfo", JSON.stringify(data));
-      } catch (error) {
-        setError(error.response.data.message);
-      }
+  const userRegister = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userRegister;
+
+  useEffect(() => {
+    if (userInfo) {
+      navigate("/");
     }
+  }, [navigate, userInfo]);
+
+  const submitHandler = (e) => {
+    e.preventDefault();
+
+    if (password !== confirmpassword) {
+      setMessage("Passwords do not match");
+    } else dispatch(register(username, email, password, role));
+  };
+
+  const handleSelect = (e) => {
+    console.log(e);
+    setRole(e);
   };
 
   return (
@@ -57,10 +55,11 @@ const Register = () => {
               <Form.Label>Name</Form.Label>
               <Form.Control
                 type="name"
-                value={name}
+                value={username}
                 placeholder="Enter name"
                 onChange={(e) => setName(e.target.value)}
               />
+              {/* <Form.Text className="error">{formErrorValues.name}</Form.Text> */}
             </Form.Group>
 
             <Form.Group controlId="formBasicEmail">
@@ -71,6 +70,7 @@ const Register = () => {
                 placeholder="Enter email"
                 onChange={(e) => setEmail(e.target.value)}
               />
+              {/* <Form.Text className="error">{formErrorValues.email}</Form.Text> */}
             </Form.Group>
 
             <Form.Group controlId="formBasicPassword">
@@ -81,6 +81,9 @@ const Register = () => {
                 placeholder="Password"
                 onChange={(e) => setPassword(e.target.value)}
               />
+              {/* <Form.Text className="error">
+                {formErrorValues.password}
+              </Form.Text> */}
             </Form.Group>
 
             <Form.Group controlId="confirmPassword">
@@ -91,7 +94,23 @@ const Register = () => {
                 placeholder="Confirm Password"
                 onChange={(e) => setConfirmPassword(e.target.value)}
               />
+              {/* <Form.Text className="error">
+                {formErrorValues.confirmpassword}
+              </Form.Text> */}
             </Form.Group>
+            <br></br>
+            <DropdownButton
+              title="Select role"
+              value={role}
+              id="dropdown-menu-align-right"
+              onSelect={handleSelect}
+            >
+              <Dropdown.Item eventKey="JobSeeker">JobSeeker</Dropdown.Item>
+              <Dropdown.Item eventKey="Employer">Employer</Dropdown.Item>
+              <Dropdown.Item eventKey="Faculty">Faculty</Dropdown.Item>
+            </DropdownButton>
+            <h5>{role}</h5>
+            <br></br>
             <br></br>
             <Button variant="primary" type="submit">
               Register
@@ -106,6 +125,6 @@ const Register = () => {
       </DefaultLayout>
     </div>
   );
-};
+}
 
 export default Register;

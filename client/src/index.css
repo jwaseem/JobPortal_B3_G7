@@ -157,3 +157,14 @@ button {
   flex-direction: column;
   margin: 20px;
 }
+
+input,
+.ant-input,
+textarea {
+  border: 1px solid #001529 !important;
+  box-shadow: none !important;
+}
+
+.ant-message {
+  z-index: 9999 !important;
+}
