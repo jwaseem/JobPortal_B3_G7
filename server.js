@@ -8,7 +8,7 @@ const usersRoute = require("./routes/usersRoute");
 dotenv.config();
 
 app.use(express.json());
-app.use("/api/jobs/", jobsRoute);
+app.use("/api/jobs", jobsRoute);
 app.use("/api/users", usersRoute);
 
 const {
