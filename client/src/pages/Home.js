@@ -1,3 +1,4 @@
+// home
 import React, { useEffect } from "react";
 import DefaultLayout from "../components/DefaultLayout";
 import { useSelector, useDispatch } from "react-redux";
