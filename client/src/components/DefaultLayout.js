@@ -81,7 +81,7 @@ class DefaultLayout extends React.Component {
           </Content>
           
           <div className="footer">
-                <h5 id="footername">ictak</h5>
+                <h5 id="footername">ictak.</h5>
           </div>
           
         
