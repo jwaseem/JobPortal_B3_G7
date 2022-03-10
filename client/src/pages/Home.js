@@ -28,9 +28,17 @@ function Home() {
   return (
     <div>
       <DefaultLayout>
-        <button type="button" class="btn btn-info" onClick={logoutHandler}>
+        <Button
+          type="button"
+          className="btn btn-info"
+          onClick={logoutHandler}
+          variant="info"
+        >
           LogOut
-        </button>
+        </Button>{" "}
+        {/* <button type="button" class="btn btn-info" onClick={logoutHandler}>
+          LogOut
+        </button> */}
         {/* <Button>LogOut</Button> */}
         <div className="homebg">
           <Row gutter={16}>
