@@ -29,10 +29,21 @@ function Home() {
   return (
     <div>
       <DefaultLayout>
-        <Button onClick={logoutHandler}>LogOut</Button>
-        <div className="bannerH">
-        <img src={banr1} className='bannerHpic'></img>
-        </div>
+
+       
+        <Button
+          type="button"
+          className="btn btn-info"
+          onClick={logoutHandler}
+          variant="info"
+        >
+          LogOut
+        </Button>{" "}
+        {/* <button type="button" class="btn btn-info" onClick={logoutHandler}>
+          LogOut
+        </button> */}
+        {/* <Button>LogOut</Button> */}
+
         <div className="homebg">
           <Row gutter={16}>
             {jobs.map((job) => {

@@ -1,24 +1,9 @@
 const express = require("express");
+const { getJobs, postJobs } = require("../controllers/jobControllers");
+const { protect } = require("../models/middlewares/authMiddleware");
 const router = express.Router();
-const Job = require("../models/jobModel");
 
-router.get("/getalljobs", async (req, res) => {
-  try {
-    const jobs = await Job.find();
-    res.send(jobs);
-  } catch (error) {
-    return res.status(400).json({ error });
-  }
-});
-
-router.post("/postjob", async (req, res) => {
-  try {
-    const newjob = new Job(req.body);
-    await newjob.save();
-    res.send("job posted successfully");
-  } catch (error) {
-    return res.status(400).json({ error });
-  }
-});
+router.route("/getalljobs").get(getJobs);
+router.route("/postjob").post(protect, postJobs);
 
 module.exports = router;
